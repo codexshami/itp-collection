@@ -1,0 +1,6 @@
+node_modules
+/backend/config/config.env
+data.json
+MERN_STACK_HOSPITAL_MANAGEMENT_SYSTEM.diseases.json
+database
+.idea/

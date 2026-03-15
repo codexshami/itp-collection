@@ -1,0 +1,9 @@
+<!--Old Name of My Application-->
+<!--<resources>-->
+<!--    <string name="app_name"> My Application </string>-->
+<!--</resources>-->
+
+<!--New Name of My Application-->
+<resources>
+<string name="app_name"> GYM APP </string>
+</resources>

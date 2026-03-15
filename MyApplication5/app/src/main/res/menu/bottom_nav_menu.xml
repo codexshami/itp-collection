@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<menu xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    <item android:id="@+id/nav_home"-->
+<!--        android:icon="@mipmap/ic_home"-->
+<!--        android:title="Home" />-->
+
+<!--   <item android:id="@+id/nav_fitness"-->
+<!--       android:icon="@mipmap/ic_fitness"-->
+<!--       android:title="Fitness" />-->
+
+<!--    <item android:id="@+id/nav_diet"-->
+<!--        android:icon="@mipmap/ic_diet"-->
+<!--        android:title="Diet" />-->
+
+<!--    <item android:id="@+id/nav_progress"-->
+<!--        android:icon="@mipmap/ic_progress"-->
+<!--        android:title="Progress"/>-->
+
+
+<!--</menu>-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/nav_fitness"
+        android:icon="@drawable/ic_fitness"
+        android:title="Fitness" />
+    <item
+        android:id="@+id/nav_diet"
+        android:icon="@drawable/ic_diet"
+        android:title="Diet" />
+    <item
+        android:id="@+id/nav_progress"
+        android:icon="@drawable/ic_progress"
+        android:title="Progress" />
+<!--    <item-->
+<!--        android:id="action_logout"-->
+<!--        android:title="Logout"-->
+<!--        android:icon="@android:drawable/ic_menu_close_clear_cancel"-->
+<!--        app:showAsAction="always"/>-->
+
+</menu>

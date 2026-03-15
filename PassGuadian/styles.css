@@ -1,0 +1,304 @@
+/* SecurePass Vault styles - mobile-first with 3D effects */
+body {
+  background: linear-gradient(180deg, #071126 0%, #071826 60%);
+  color: #e6eef6;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+:root {
+  --accent: #00f5d4;
+  --muted: #94a3b8;
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(7, 17, 38, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+.brand h1 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+  transform: rotateX(10deg);
+}
+
+.hamburger {
+  display: inline-flex;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.hamburger:hover {
+  transform: scale(1.2) rotate(15deg);
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.6rem;
+  transition: all 0.3s ease;
+  transform: translateZ(0);
+}
+.nav-links a.active, .nav-links a:hover {
+  background: var(--glass);
+  color: var(--accent);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 245, 212, 0.3);
+}
+
+.nav-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn {
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 245, 212, 0.25);
+}
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent), #4fd1c5);
+  color: #072023;
+  border: 0;
+  font-weight: 600;
+}
+.btn.ghost {
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+main {
+  padding: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 2rem 0;
+}
+.hero-content h2 {
+  font-size: 1.8rem;
+  margin: 0;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+}
+.cta {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.cyber-card {
+  width: 140px;
+  height: 140px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,245,212,0.05));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), inset 0 0 25px rgba(0, 245, 212, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+.cyber-card i {
+  font-size: 2.2rem;
+  color: var(--accent);
+}
+.cyber-card:hover {
+  transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+  box-shadow: 0 20px 50px rgba(0, 245, 212, 0.3);
+}
+
+.panel {
+  margin-top: 1.25rem;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  padding: 1.2rem;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.row {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.grid {
+  display: grid;
+  gap: 0.5rem;
+}
+.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+input[type=range] {
+  width: 100%;
+}
+
+.result-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.result input {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: transparent;
+  color: inherit;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.5);
+}
+
+.result-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.meter {
+  height: 12px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.6rem;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
+}
+.meter-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff6b6b, #f6c244, #6ee7b7);
+  transition: width 0.4s ease-in-out;
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.tips {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.history ul, .vault-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.history li, .vault-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  background: rgba(0,0,0,0.25);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
+  transition: transform 0.25s ease;
+}
+.history li:hover, .vault-list li:hover {
+  transform: translateX(5px);
+}
+
+footer {
+  text-align: center;
+  padding: 1.2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  background: rgba(7, 17, 38, 0.6);
+  backdrop-filter: blur(6px);
+}
+
+@media(min-width:700px) {
+  .hero {
+    grid-template-columns: 1fr 280px;
+  }
+  .grid.cols-2 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop nav adjustments */
+@media(min-width:900px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+/* Simple focus styles for accessibility */
+:focus {
+  outline: 3px solid rgba(0, 245, 212, 0.3);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Dark-mode toggled by class on body */
+body.dark {
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --muted: #374151;
+  color: #071723;
+}
+body.dark .nav-links a {
+  color: #475569;
+}
+body.dark .btn {
+  border-color: rgba(7, 23, 35, 0.06);
+}

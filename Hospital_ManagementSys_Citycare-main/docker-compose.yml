@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    image: ray8118/hospital-system-frontend:latest
+    ports:
+      - "3000:80"
+    restart: always
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+    image: ray8118/hospital-system-backend:latest
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+    restart: always
+    networks:
+      - app-network
+
+  dashboard:
+    build:
+      context: ./dashboard
+    image: ray8118/hospital-system-dashboard:latest
+    ports:
+      - "3001:80"
+    restart: always
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

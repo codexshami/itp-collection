@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    android:background="#121212">-->
+
+<!--    &lt;!&ndash; Toolbar &ndash;&gt;-->
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#BB86FC"-->
+<!--        android:title="Diet Plans"-->
+<!--        android:titleTextColor="@android:color/white"-->
+<!--        android:elevation="4dp" />-->
+
+<!--    &lt;!&ndash; Buttons &ndash;&gt;-->
+<!--    <Button-->
+<!--        android:id="@+id/btnWeightGain"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Weight Gain"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:background="@drawable/rounded_button"-->
+<!--        android:textColor="@android:color/white"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnWeightLoss"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Weight Loss"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:background="@drawable/rounded_button"-->
+<!--        android:textColor="@android:color/white"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnMaintenance"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Maintenance"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:background="@drawable/rounded_button"-->
+<!--        android:textColor="@android:color/white"/>-->
+
+<!--</LinearLayout>-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#121212">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BB86FC"
+        android:title="Diet Plans"
+        android:titleTextColor="@android:color/white"
+        android:elevation="4dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dietimage"
+        android:src="@drawable/dietplanimage"
+        android:layout_marginTop="5sp"
+        android:maxHeight="100sp"
+        android:maxWidth="100sp"/>
+
+    <!-- Diet Plan Buttons -->
+    <Button
+        android:id="@+id/btnWeightGain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Weight Gain"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/btnWeightLoss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Weight Loss"
+        android:layout_margin="5dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/btnMaintenance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Maintenance"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"/>
+
+    <!-- Custom Diet Button -->
+    <Button
+        android:id="@+id/btnCustomDiet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get My Diet Plan"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>

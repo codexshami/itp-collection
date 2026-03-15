@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    android:padding="16dp">-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textProgressTitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Your Fitness Progress"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_gravity="center_horizontal"/>-->
+
+<!--    <ListView-->
+<!--        android:id="@+id/listProgress"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"/>-->
+<!--</LinearLayout>-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#121212">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BB86FC"
+        android:title="Progress Tracker"
+        android:titleTextColor="@android:color/white"
+        android:elevation="4dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressimage"
+        android:src="@drawable/progressimage"
+        android:layout_marginTop="5sp"
+        android:maxWidth="100sp"
+        android:maxHeight="100sp"/>
+
+    <!-- Buttons -->
+    <Button
+        android:id="@+id/btnWeightProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Weight Progress"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/btnWorkoutProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Workout Progress"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/btnDietProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Diet Progress"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"/>
+
+    <!-- Add Your Weight Button -->
+    <Button
+        android:id="@+id/btnAddWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Your Weight"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatVibe - Real-Time Chat</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px;
+    }
+    .chat-app {
+      width: 100%; max-width: 1200px; height: 90vh;
+      background: rgba(255, 255, 255, 0.95); border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.2); display: flex; overflow: hidden;
+      animation: fadeIn 0.4s ease-out;
+    }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+
+    .sidebar { width: 280px; background: #4a5568; color: white; padding: 20px; display: flex; flex-direction: column; }
+    .user-profile { display: flex; align-items: center; margin-bottom: 25px; }
+    .avatar { width: 50px; height: 50px; border-radius: 50%; background: #667eea;
+      display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; margin-right: 15px; }
+    .user-info h3 { font-weight: 500; }
+    .user-info p { font-size: 12px; color: #a0aec0; }
+    .online-users h4 { margin-bottom: 10px; font-weight: 500; color: #a0aec0; }
+    .user-list { list-style: none; }
+    .user-item { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .status { width: 10px; height: 10px; border-radius: 50%; background: #48bb78; margin-right: 8px; }
+
+    .chat-container { flex: 1; display: flex; flex-direction: column; }
+    .chat-header { padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .chat-title h2 { font-weight: 500; color: #2d3748; }
+    .chat-title p { font-size: 14px; color: #718096; }
+    .chat-actions button { border: none; background: none; margin-left: 12px; cursor: pointer; font-size: 16px; color: #718096; }
+    .chat-actions button:hover { color: #667eea; }
+
+    .messages { flex: 1; padding: 20px; overflow-y: auto; background: #f7fafc; }
+    .message { margin-bottom: 15px; display: flex; flex-direction: column; }
+    .message-content { max-width: 70%; padding: 12px 16px; border-radius: 18px; }
+    .message.received .message-content { background: white; border: 1px solid #e2e8f0; border-top-left-radius: 4px; }
+    .message.sent { align-items: flex-end; }
+    .message.sent .message-content { background: #667eea; color: white; border-top-right-radius: 4px; }
+    .message-info { display: flex; justify-content: space-between; font-size: 12px; color: #718096; padding: 0 5px; }
+    .typing-indicator { font-style: italic; font-size: 14px; color: #718096; margin-top: 5px; }
+
+    .input-area { padding: 15px; background: white; border-top: 1px solid #e2e8f0; display: flex; align-items: center; }
+    .message-input { flex: 1; padding: 12px 15px; border: 1px solid #e2e8f0; border-radius: 25px; outline: none; height: 45px; resize: none; }
+    .message-input:focus { border-color: #667eea; }
+    .send-button { margin-left: 12px; width: 45px; height: 45px; border-radius: 50%; background: #667eea; border: none; color: white; cursor: pointer; font-size: 18px; }
+    .send-button:hover { background: #5a67d8; }
+
+    .modal-overlay { position: fixed; top:0;left:0;right:0;bottom:0; background: rgba(0,0,0,0.6); display:flex; justify-content:center; align-items:center; }
+    .login-modal { background:white; border-radius: 12px; padding: 25px; width: 350px; text-align:center; }
+    .login-modal h2 { margin-bottom: 15px; color:#2d3748; }
+    .form-group { margin-bottom: 15px; text-align:left; }
+    .form-group label { display:block; margin-bottom:5px; color:#4a5568; }
+    .form-group input { width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px; }
+    .form-group input:focus { border-color:#667eea; }
+    .login-button { width:100%; padding:12px; background:#667eea; color:white; border:none; border-radius:8px; cursor:pointer; font-size:16px; }
+    .login-button:hover { background:#5a67d8; }
+
+    @media(max-width:768px){
+      .chat-app{flex-direction:column;height:95vh;}
+      .sidebar{width:100%;flex-direction:row;align-items:center;justify-content:space-between;}
+      .online-users{display:none;}
+      .message-content{max-width:85%;}
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!-- Login Modal -->
+  <div class="modal-overlay" v-if="!currentUser">
+    <div class="login-modal">
+      <h2>Join ChatVibe</h2>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" v-model="username" @keyup.enter="login" placeholder="Enter your username">
+      </div>
+      <button class="login-button" @click="login">Enter Chat</button>
+    </div>
+  </div>
+
+  <!-- Chat App -->
+  <div class="chat-app" v-if="currentUser">
+    <div class="sidebar">
+      <div class="user-profile">
+        <div class="avatar">{{ currentUser.charAt(0).toUpperCase() }}</div>
+        <div class="user-info">
+          <h3>{{ currentUser }}</h3>
+          <p>Online</p>
+        </div>
+      </div>
+      <div class="online-users">
+        <h4>Online Users ({{ users.length }})</h4>
+        <ul class="user-list">
+          <li class="user-item" v-for="u in users" :key="u">
+            <span class="status"></span> {{ u }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chat-container">
+      <div class="chat-header">
+        <div class="chat-title">
+          <h2>General Chat</h2>
+          <p>Connect with people around the world</p>
+        </div>
+        <div class="chat-actions">
+          <button title="Search">🔍</button>
+          <button title="Notifications">🔔</button>
+          <button title="Settings">⚙️</button>
+        </div>
+      </div>
+
+      <div class="messages" ref="msgBox">
+        <div class="message" :class="m.sender === currentUser ? 'sent':'received'" v-for="m in messages" :key="m.id">
+          <div class="message-content">{{ m.text }}</div>
+          <div class="message-info">
+            <span>{{ m.sender }}</span><span>{{ m.time }}</span>
+          </div>
+        </div>
+        <div class="typing-indicator" v-if="typingIndicator">{{ typingIndicator }} is typing...</div>
+      </div>
+
+      <div class="input-area">
+        <textarea class="message-input" v-model="newMessage" placeholder="Type a message..." @keyup.enter="sendMessage" @input="userTyping"></textarea>
+        <button class="send-button" @click="sendMessage">➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Vue.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+<script>
+new Vue({
+  el: "#app",
+  data:{
+    username:"", currentUser:null, newMessage:"",
+    messages:[
+      {id:1, text:"Welcome to ChatVibe! Start chatting 🚀", sender:"System", time:new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})},
+      {id:2, text:"Hey everyone! Glad to be here.", sender:"Alice", time:new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}
+    ],
+    users:["Alice","Bob","Charlie"], typingIndicator:"", typingTimeout:null
+  },
+  methods:{
+    login(){
+      if(this.username.trim()){
+        this.currentUser=this.username;
+        if(!this.users.includes(this.username)) this.users.push(this.username);
+      }
+    },
+    sendMessage(){
+      if(this.newMessage.trim()){
+        this.messages.push({
+          id:this.messages.length+1,
+          text:this.newMessage,
+          sender:this.currentUser,
+          time:new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})
+        });
+        this.newMessage="";
+        this.scrollToBottom();
+        this.typingIndicator="";
+      }
+    },
+    userTyping(){
+      this.typingIndicator=this.currentUser;
+      clearTimeout(this.typingTimeout);
+      this.typingTimeout=setTimeout(()=>this.typingIndicator="",1500);
+    },
+    scrollToBottom(){
+      this.$nextTick(()=>{ let box=this.$refs.msgBox; box.scrollTop=box.scrollHeight; });
+    }
+  }
+});
+</script>
+</body>
+</html>

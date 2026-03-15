@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecurePass Vault</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <main>
+
+      <!-- HISTORY -->
+      <section id="history" class="panel">
+        <div class="card history">
+          <h3><i class="fa-solid fa-clock-rotate-left"></i> Session History</h3>
+          <ul id="history-list" aria-live="polite"></ul>
+          <div class="row">
+            <button id="clear-history" class="btn ghost"><i class="fa-solid fa-trash"></i> Clear History</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHECKER -->
+      <section id="checker" class="panel">
+        <h3><i class="fa-solid fa-shield-halved"></i> Password Checker</h3>
+        <div class="card">
+          <label for="check-input">Enter a password to check</label>
+          <input id="check-input" type="password" aria-describedby="check-hint" placeholder="Type your password here" />
+          <div id="check-meter" class="meter">
+            <div class="meter-bar" id="check-meter-bar" aria-hidden="true"></div>
+          </div>
+          <div id="check-info" class="meta"></div>
+          <div class="tips" id="check-tips"></div>
+          <div class="row">
+            <button id="pwned-check" class="btn"><i class="fa-solid fa-database"></i> Check Breach (HIBP)</button>
+            <span id="pwned-result"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- VAULT -->
+      <section id="vault" class="panel">
+        <h3><i class="fa-solid fa-vault"></i> Vault (Local Storage)</h3>
+        <div class="card">
+          <div class="row form-row">
+            <label for="vault-title">Title</label>
+            <input id="vault-title" type="text" placeholder="e.g., Email account" />
+            <label for="vault-password">Password</label>
+            <input id="vault-password" type="text" placeholder="Paste or use generated" />
+            <button id="vault-save" class="btn primary"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+          </div>
+          <div class="vault-list card" aria-live="polite">
+            <h4><i class="fa-solid fa-lock"></i> Saved Passwords</h4>
+            <ul id="vault-items"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="panel">
+        <h3><i class="fa-solid fa-circle-info"></i> About SecurePass Vault</h3>
+        <div class="card">
+          <p><strong>SecurePass Vault</strong> is a modern password tool built using pure HTML, CSS, and JavaScript. It demonstrates how to generate, check, and manage passwords in a secure, responsive, and accessible way — all in your browser.</p>
+          <ul class="features-list">
+            <li><i class="fa-solid fa-key"></i> Strong password generator</li>
+            <li><i class="fa-solid fa-gauge-high"></i> Real-time strength checker</li>
+            <li><i class="fa-solid fa-vault"></i> Local storage vault</li>
+            <li><i class="fa-solid fa-database"></i> Breach check via HIBP API</li>
+            <li><i class="fa-solid fa-moon"></i> Dark mode support</li>
+          </ul>
+          <p class="note">⚠️ Disclaimer: This demo uses client-side storage. Do not store sensitive production passwords here.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>© 2025 SecurePass Vault • Built with ❤️ using HTML, CSS & JS</small>
+    </footer>
+  </div>
+
+  <!-- Login modal (JS-created) -->
+  <script src="script.js" defer></script>
+</body>
+</html>
