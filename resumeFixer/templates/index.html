@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeFixer - ATS Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section class="card">
+            <h1>ResumeFixer</h1>
+            <p class="subtitle">Upload resume and get ATS score with improvements.</p>
+
+            {% if error %}
+                <div class="alert error">{{ error }}</div>
+            {% endif %}
+
+            <form method="post" enctype="multipart/form-data" class="form-grid">
+                <label>
+                    Full Name
+                    <input type="text" name="name" placeholder="Your full name">
+                </label>
+                <label>
+                    Email
+                    <input type="email" name="email" placeholder="name@example.com">
+                </label>
+                <label>
+                    Target Role
+                    <input type="text" name="target_role" placeholder="e.g., Python Developer">
+                </label>
+                <label>
+                    Resume File (PDF/DOCX/TXT)
+                    <input type="file" name="resume" accept=".pdf,.docx,.txt" required>
+                </label>
+                <button type="submit">Analyze Resume</button>
+            </form>
+        </section>
+
+        {% if result %}
+        <section class="card results">
+            <h2>Analysis Result</h2>
+            <p><strong>Candidate:</strong> {{ result.candidate_name }}</p>
+            <p><strong>Email:</strong> {{ result.provided_email }}</p>
+            <p><strong>Target Role:</strong> {{ result.target_role }}</p>
+            <p class="score"><strong>ATS Score:</strong> {{ result.ats_score }}/100</p>
+            <p><strong>Word Count:</strong> {{ result.word_count }}</p>
+
+            <h3>Detected Sections</h3>
+            <ul>
+                {% for section, present in result.section_coverage.items() %}
+                    <li>{{ section|title }}: {{ "Yes" if present else "No" }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Matched Keywords</h3>
+            {% if result.matched_keywords %}
+                <p>{{ result.matched_keywords | join(", ") }}</p>
+            {% else %}
+                <p>No major keywords detected.</p>
+            {% endif %}
+
+            <h3>Suggestions</h3>
+            <ul>
+                {% for item in result.suggestions %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+    </main>
+</body>
+</html>

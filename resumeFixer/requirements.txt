@@ -1,0 +1,3 @@
+Flask
+pypdf
+docx2txt

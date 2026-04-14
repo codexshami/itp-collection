@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 16px;
+    display: grid;
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+.subtitle {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    gap: 14px;
+}
+
+label {
+    font-size: 14px;
+    display: grid;
+    gap: 6px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #cfd8dc;
+    border-radius: 8px;
+}
+
+button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #0069d9;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    background: #0053ac;
+}
+
+.alert.error {
+    background: #ffebee;
+    color: #b71c1c;
+    border: 1px solid #ffcdd2;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+}
+
+.results ul {
+    margin-top: 8px;
+}
+
+.score {
+    font-size: 20px;
+    color: #0a7d33;
+}
