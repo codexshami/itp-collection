@@ -2,3 +2,8 @@
 *.pkl
 .ipynb_checkpoints"Revive/" 
 ".env" 
+boxing-env/
+venv/
+env/
+__pycache__/
+*.pyc
